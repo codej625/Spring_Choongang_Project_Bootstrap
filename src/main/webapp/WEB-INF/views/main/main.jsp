@@ -9,7 +9,7 @@
   <!-- Custom styles for this template -->
   <link href="${pageContext.request.contextPath}/css/shop-homepage.css" rel="stylesheet">
 	  <script src="${pageContext.request.contextPath}/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  	<script src="${pageContext.request.contextPath}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,10 +74,10 @@ padding-top: 5%;
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/1446x500" alt="First slide">
+              <img class="d-block img-fluid" src="http://placehold.it/1447x430" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="${pageContext.request.contextPath}/img/btnG_완성형.png" alt="Second slide">
+              <img class="d-block img-fluid" src="http://placehold.it/1447x430" alt="Second slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
