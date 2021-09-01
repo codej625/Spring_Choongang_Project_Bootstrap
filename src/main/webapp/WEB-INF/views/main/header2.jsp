@@ -28,18 +28,18 @@
             MEETING
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=1">게임/만화/애니</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=2">영화/음악/그림</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=3">스포츠/레저</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=4">반려동물</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=5">패션/미용</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=6">건강/다이어트</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=7">가족/육아</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=8">컴퓨터/통신</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=9">외국어/인문/과학</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=10">경제/금융/정치/사회</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=11">문학/창작</a></li>
-         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category?bt_num=1&bc_num=12">기타</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=1">게임/만화/애니</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=2">영화/음악/그림</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=3">스포츠/레저</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=4">반려동물</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=5">패션/미용</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=6">건강/다이어트</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=7">가족/육아</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=8">컴퓨터/통신</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=9">외국어/인문/과학</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=10">경제/금융/정치/사회</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=11">문학/창작</a></li>
+         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/post/category2?bt_num=1&bc_num=12">기타</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

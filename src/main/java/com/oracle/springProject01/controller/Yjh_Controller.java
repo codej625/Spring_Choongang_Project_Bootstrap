@@ -54,7 +54,7 @@ public class Yjh_Controller {
    private com.oracle.springProject01.service.yjhService.MemberService ys;
    
 //   게시물 리스트 불러오기
-   @RequestMapping(value = "/post/category", method = { RequestMethod.GET, RequestMethod.POST })
+   @RequestMapping(value = "/post/category2", method = { RequestMethod.GET, RequestMethod.POST })
    public String categoryGet(HttpServletRequest request,Integer bt_num, Integer bc_num, String keyword, String currentPage, Model model, Member lhj_MemberVO) {
       System.out.println("Yjh_Controller categoryGet Start...");
       String sessionID =  (String) request.getSession().getAttribute("sessionID");
@@ -89,7 +89,7 @@ public class Yjh_Controller {
       model.addAttribute("pg", pg);
       model.addAttribute("bt_num", bt_num);
       model.addAttribute("bc_num", bc_num);
-      return "post/category";
+      return "post/category2";
    }
 
 //	모임/클래스 개설하기 버튼
