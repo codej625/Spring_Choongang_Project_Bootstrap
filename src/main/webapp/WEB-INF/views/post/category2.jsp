@@ -9,12 +9,11 @@
 	href="${pageContext.request.contextPath}/css/cate.css" />
 <style type="text/css">
 .str {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
 }
 </style>
-
 
 </head>
 <body>
@@ -121,12 +120,10 @@
 								src="${pageContext.request.contextPath}/upload/${post.p_img}"
 								class="card-img-top" alt="...">
 							<div class="card-body">
-								<div class="str">
-									<a
-										href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}&pm_id=${post.m_id }"
-										class="btn btn-outline-success">${post.p_title }</a>
-								</div>
-								<input type="hidden" name="p_num" value="${post.p_num }">
+								<a
+									href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}&pm_id=${post.m_id }"
+									class="btn btn-outline-success">${post.p_title }</a> <input
+									type="hidden" name="p_num" value="${post.p_num }">
 								<div class="con_contents">
 									<c:choose>
 										<c:when test="${post.p_cstatus == 0 }">무료</c:when>
@@ -143,54 +140,20 @@
 		</div>
 
 
-
-
-
-
-
-
-		<div class="container">
-			<c:forEach var="post" items="${listPost }">
-				<div class="con_item" style="cursor: pointer;"
-					onclick="location.href='${pageContext.request.contextPath}/post/postListDetail?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}&pm_id=${post.m_id }'">
-					<div class="con_itm">
-						<div class="con_itm_tit">
-							<input type="hidden" name="p_num" value="${post.p_num }">${post.p_title }
-						</div>
-					</div>
-					<div class="con_itm">
-						<div class="con_contents">
-							<c:choose>
-								<c:when test="${post.p_cstatus == 0 }">무료</c:when>
-								<c:when test="${post.p_cstatus == 1 }">유료</c:when>
-							</c:choose>
-						</div>
-						<div class="con_subinfo">${post.p_metstart }조회수${post.p_hit }</div>
-					</div>
-				</div>
+		<!-- 				<div class="con_item">2</div> -->
+		<div aria-label="Page navigation example">
+			<c:if test="${pg.startPage > pg.pageBlock }">
+				<a
+					href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${pg.startPage-pg.pageBlock }">[이전]</a>
+			</c:if>
+			<c:forEach var="i" begin="${pg.startPage }" end="${pg.endPage }">
+				<a
+					href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${i }">[${i }]</a>
 			</c:forEach>
-
-
-
-
-
-
-
-			<!-- 				<div class="con_item">2</div> -->
-			<div class="page_btn">
-				<c:if test="${pg.startPage > pg.pageBlock }">
-					<a
-						href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${pg.startPage-pg.pageBlock }">[이전]</a>
-				</c:if>
-				<c:forEach var="i" begin="${pg.startPage }" end="${pg.endPage }">
-					<a
-						href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${i }">[${i }]</a>
-				</c:forEach>
-				<c:if test="${pg.endPage < pg.totalPage }">
-					<a
-						href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${pg.startPage+pg.pageBlock }">[다음]</a>
-				</c:if>
-			</div>
+			<c:if test="${pg.endPage < pg.totalPage }">
+				<a
+					href="${pageContext.request.contextPath}/post/category?bt_num=${bt_num }&bc_num=${bc_num }&currentPage=${pg.startPage+pg.pageBlock }">[다음]</a>
+			</c:if>
 		</div>
 	</main>
 	<%@ include file="/WEB-INF/views//main/footer.jsp"%>
