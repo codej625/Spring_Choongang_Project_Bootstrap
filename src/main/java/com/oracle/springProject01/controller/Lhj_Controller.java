@@ -291,8 +291,8 @@ public class Lhj_Controller {
 		session.invalidate();
 		return "/main/main";
 	}
-
-	// 마이페이지 //캘린더 api 추가 예정
+	
+	// 마이페이지
 	@RequestMapping(value = "/member/mypage")
 	public String mypage(Model model, HttpServletRequest request, String m_id) throws Exception {
 		System.out.println("lhjController mypage Start...");
