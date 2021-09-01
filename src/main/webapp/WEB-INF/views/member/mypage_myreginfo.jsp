@@ -100,7 +100,7 @@
         </nav>
         
 		<!-- main -->		<div class="userinfo_wrap">
-			<div class="title">${lhj_MemberVO.m_name }님의 마이페이지</div>
+			<div class="title" style="margin-left: 3%">${lhj_MemberVO.m_name }님의 마이페이지</div>
 <!-- 			<div class="info_nav_bar"> -->
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage">마이페이지 홈</a></div> --%>
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_update">회원정보 수정</a></div> --%>
@@ -112,17 +112,33 @@
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_deleteMyself">회원 탈퇴</a></div> --%>
 <!-- 			</div> -->
 <!-- 				reginfo 전부 보여주는거  -->
-			<div class="my_info_box">
+			<div>
+			<div class="container col-12 h-100p-5 bg-light border rounded-3" style="
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 3%; ">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="all" onclick="allBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="class" onclick="classBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+    margin-right: 3%;
+    margin-left: 3%;" type="button" value="meeting" onclick="meetingBtn()">
+			</div>
+					<div class="row">
 				<div>
-					<input type="button" value="all" onclick="allBtn()">
-					<input type="button" value="class" onclick="classBtn()">
-					<input type="button" value="meeting" onclick="meetingBtn()">
-				</div>
-				<div>
-				<table id="all" border="1">
+					<div class="row col-12" id="all">
 				<c:forEach var="lhj_MemberVO" items="${myRegInfoList }">
-					<tr>
-						<td rowspan="3" id="table_img">
+						<div class="col-4 container card" style="width: 18rem;">
+					
 						<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 						<c:if test="${lhj_MemberVO.p_img == null}">
 							<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
@@ -131,8 +147,8 @@
 							<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 						</c:if>
 						</a>
-						</td>
-						<td colspan="2">
+					
+			
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -140,24 +156,19 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-							<a href="${pageContext.request.contextPath}/chat/chat2?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
-							asd</a>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
+						
+				
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td>가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
+					
+				
+						가격 : ${lhj_MemberVO.p_cost }
+					
 <!-- 							유료인경우 -->
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								<c:choose>
 									<c:when test="${lhj_MemberVO.ri_pstatus == 'N'}">
 										<a href="http://localhost:8181/springProject01/post/postRegInfoApplication?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num }">
-										<input type="button" value="결제 하기" ></a>
+										<input class="btn btn-outline-success" type="button" value="결제 하기" ></a>
 									</c:when>
 									<c:when test="${lhj_MemberVO.ri_pstatus == 'Y'}">
 										결제 완료
@@ -170,20 +181,21 @@
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								
-								<input type="submit" value="신청 취소">
+								<input class="btn btn-outline-success" type="submit" value="신청 취소">
 							</form>
-							<input type="button" value="채팅" onclick="location.href='${pageContext.request.contextPath}/chat/chat2?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}'">
-						</td>
-					</tr>
+							</div>
 				</c:forEach>	
-				</table>
+							</div>
+		</div>
+				
+				
 
 <!-- 				reginfo - class만 보여주는 거 -->
-
-				<table class="myreginfo_table" border="1" id="class_" style="display: none">
+	
+				<div class="row col-12" id="class_" style="display: none">
 								<c:forEach var="lhj_MemberVO" items="${myRegInfoList }">
-					<tr>
-						<td rowspan="3" id="table_img">
+						<div class="col-4 container card" style="width: 18rem;">		
+								
 						<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 						<c:if test="${lhj_MemberVO.p_img == null}">
 							<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
@@ -192,8 +204,6 @@
 							<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 						</c:if>
 						</a>
-						</td>
-						<td colspan="2">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -201,18 +211,11 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td>가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
+						가격 : ${lhj_MemberVO.p_cost }
+						
 							<c:if test="${lhj_MemberVO.ri_pstatus == 'N'}">
-								<input type="button" value="결제 하기" >
+								<input class="btn btn-outline-success" type="button" value="결제 하기" >
 							</c:if>
 							<c:if test="${lhj_MemberVO.ri_pstatus == 'Y'}">
 								결제 완료
@@ -223,19 +226,18 @@
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								
-								<input type="submit" value="신청 취소">
+								<input class="btn btn-outline-success" type="submit" value="신청 취소">
 							</form>
-						</td>
-					</tr>
+						</div>
 				</c:forEach>	
-				</table>
+							</div>
 				
 <!-- 				reginfo - meeting만 보여주는 거 -->
 
-				<table class="myreginfo_table" border="1" id="meeting" style="display: none">
+
+				<div class="row col-12" id="meeting" style="display: none">
 								<c:forEach var="lhj_MemberVO" items="${myRegInfoList }">
-					<tr>
-						<td rowspan="3" id="table_img">
+								<div class="col-4 container card" style="width: 18rem;">
 						<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 						<c:if test="${lhj_MemberVO.p_img == null}">
 							<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
@@ -244,8 +246,6 @@
 							<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 						</c:if>
 						</a>
-						</td>
-						<td colspan="2">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -253,18 +253,10 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td>가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
+						가격 : ${lhj_MemberVO.p_cost }
 							<c:if test="${lhj_MemberVO.ri_pstatus == 'N'}">
-								<input type="button" value="결제 하기" >
+								<input class="btn btn-outline-success" type="button" value="결제 하기" >
 							</c:if>
 							<c:if test="${lhj_MemberVO.ri_pstatus == 'Y'}">
 								결제 완료
@@ -275,15 +267,13 @@
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								
-								<input type="submit" value="신청 취소">
+								<input class="btn btn-outline-success" type="submit" value="신청 취소">
 							</form>
-						</td>
-					</tr>
+						</div>
 				</c:forEach>
-				</table>
 			</div>
 		</div>
 	</main>
-	<%@ include file="/WEB-INF/views//main/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/main/footer.jsp"%>
 </body>
 </html>

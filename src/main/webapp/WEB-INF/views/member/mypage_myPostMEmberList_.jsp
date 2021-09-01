@@ -61,11 +61,12 @@
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_changePW">비밀번호 변경</a></div> --%>
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_deleteMyself">회원 탈퇴</a></div> --%>
 <!-- 			</div> -->
-			<div class="info_section">
-				<table class="myreginfo_table" border="1">
+			<div class="row">
+				<div>
+					<div class="row col-12">
 				<c:forEach var="lhj_MemberVO" items="${mypage_myPostMEmberList }">
-					<tr>
-						<td rowspan="2">
+					<div class="col-4 container card" style="width: 18rem;">
+					
 						<c:if test="${lhj_MemberVO.m_img == null}">
 								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
 							
@@ -73,11 +74,7 @@
 						<c:if test="${lhj_MemberVO.m_img != null}">
 								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.m_img }">
 						</c:if>
-						</td>
-						<td>
 							${lhj_MemberVO.m_name }
-						</td>
-						<td rowspan="2">
 							<c:if test="${lhj_MemberVO.ri_pstatus == 'N'}">
 								미결제
 							</c:if>
@@ -90,18 +87,12 @@
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								
-								<input type="submit" value="신청 거절">
+								<input class="btn btn-outline-success" type="submit" value="신청 거절">
 							</form>
-						</td>
-					</tr>
-					<tr>
-						<td>
 							${lhj_MemberVO.m_tel }
-						</td>
-					</tr> 
-				</c:forEach>	
-				</table>
 				</div>
+				</c:forEach>	
+							</div>
 		</div>
 	</main>
 	<%@ include file="/WEB-INF/views//main/footer.jsp"%>

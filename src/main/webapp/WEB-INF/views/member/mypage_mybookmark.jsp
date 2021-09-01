@@ -103,7 +103,7 @@
         
 		<!-- main -->
 		<div class="userinfo_wrap">
-			<div class="title">${lhj_MemberVO.m_name }님의 마이페이지</div>
+			<div class="title" style="margin-left: 3%">${lhj_MemberVO.m_name }님의 마이페이지</div>
 <!-- 			<div class="info_nav_bar"> -->
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage">마이페이지 홈</a></div> --%>
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_update">회원정보 수정</a></div> --%>
@@ -115,27 +115,44 @@
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_deleteMyself">회원 탈퇴</a></div> --%>
 <!-- 			</div> -->
 <!-- 				bookmark 전부 보여주는거  -->
-			<div class="my_info_box">
+			<div>
+			<div class="container col-12 h-100p-5 bg-light border rounded-3" style="
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 3%; ">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="all" onclick="allBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="class" onclick="classBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+    margin-right: 3%;
+    margin-left: 3%;" type="button" value="meeting" onclick="meetingBtn()">
+			</div>
+			
+			
+				<div class="row">
 				<div>
-					<input type="button" value="all" onclick="allBtn()">
-					<input type="button" value="class" onclick="classBtn()">
-					<input type="button" value="meeting" onclick="meetingBtn()">
-				</div>
-				<div>
-				<table id="all" border="1">
+					<div class="row col-12" id="meeting">
 				<c:forEach var="lhj_MemberVO" items="${myBookMarkList }">
-					<tr>
-						<td rowspan="2" id="table_img">
+					<div class="col-4 container card" style="width: 18rem;">
+					
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
-								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
+								<img src="${pageContext.request.contextPath}/img/goya.jpg">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
+								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 							</c:if>
 							</a>
-						</td>
-						<td colspan="2">
+						
 							<input type="hidden" value="${lhj_MemberVO.m_id }" name="m_id">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
@@ -144,22 +161,18 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								유료
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td id="table_intro">
+					
+					
 							${lhj_MemberVO.p_intro }
-						</td>
-						<td>
+						
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkNO" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
 										<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 										<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
-										<input type="submit" id="NoBMBtn" value="북마크 취소">
+										<input class="btn btn-outline-success" type="submit" id="NoBMBtn" value="북마크 취소">
 							</form>
-<%-- 							<c:if test="${lhj_MemberVO.p_capa >= }"> --%>
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkSin" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
 										<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
@@ -167,31 +180,28 @@
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
 										<c:if test="${lhj_MemberVO.b_reg == 'N'}">
-											<input type="submit" id="BMtoRGBtn" value="신청">
+											<input class="btn btn-outline-success" type="submit" id="BMtoRGBtn" value="신청">
 										</c:if>
 							</form>
-<%-- 							</c:if> --%>
-						</td>
-					</tr>
-				</c:forEach>
-				</table>	
+						</div>
+				</c:forEach>	
+							</div>
+		</div>
 			
 <!-- 				bookmark - class 보여주는거  -->
 
-				<table id="class_" style="display: none;" border="1">
+				<div class="row col-12" id="class_" style="display: none">
 				<c:forEach var="lhj_MemberVO" items="${myBookMark_classList }">
-					<tr>
-						<td rowspan="2" id="table_img">
+					<div class="col-4 container card" style="width: 18rem;">		
+						
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
 								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
+								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 							</c:if>
 							</a>
-						</td>
-						<td colspan="2">
 							<input type="hidden" value="${lhj_MemberVO.m_id }" name="m_id">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
@@ -200,20 +210,14 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								유료
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td id="table_intro">
 							${lhj_MemberVO.p_intro }
-						</td>
-						<td>
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkNO" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
 										<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 										<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
-										<input type="submit" id="NoBMBtn" value="북마크 취소">
+										<input class="btn btn-outline-success" type="submit" id="NoBMBtn" value="북마크 취소">
 							</form>
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkSin" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
@@ -222,30 +226,26 @@
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
 										<c:if test="${lhj_MemberVO.b_reg == 'N'}">
-											<input type="submit" id="BMtoRGBtn" value="신청">
+											<input class="btn btn-outline-success" type="submit" id="BMtoRGBtn" value="신청">
 										</c:if>
 							</form>
-						</td>
-					</tr>
-				</c:forEach>
-				</table>	
-			
+						</div>
+				</c:forEach>	
+							</div>
+		</div>
 <!-- 				bookmark -meeting 보여주는거  -->
 
-				<table id="meeting" style="display: none;" border="1">
+				<div class="row col-12" id="meeting" style="display: none">
 				<c:forEach var="lhj_MemberVO" items="${myBookMark_meetingList }">
-					<tr>
-						<td rowspan="2" id="table_img">
+						<div class="col-4 container card" style="width: 18rem;">
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
-								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
+								<img src="${pageContext.request.contextPath}/img/goya.jpg">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
 								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
 							</c:if>
 							</a>
-						</td>
-						<td colspan="2">
 							<input type="hidden" value="${lhj_MemberVO.m_id }" name="m_id">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
@@ -254,20 +254,14 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								유료
 							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<td id="table_intro">
 							${lhj_MemberVO.p_intro }
-						</td>
-						<td>
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkNO" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
 										<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 										<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
-										<input type="submit" id="NoBMBtn" value="북마크 취소">
+										<input class="btn btn-outline-success" type="submit" id="NoBMBtn" value="북마크 취소">
 							</form>
 							<form action="${pageContext.request.contextPath}/member/mypage_mybookmarkSin" method="post">
 										<input type="hidden" name="m_id" value="${lhj_MemberVO.m_id }">
@@ -276,17 +270,14 @@
 										<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 										
 										<c:if test="${lhj_MemberVO.b_reg == 'N'}">
-											<input type="submit" id="BMtoRGBtn" value="신청">
+											<input class="btn btn-outline-success" type="submit" id="BMtoRGBtn" value="신청">
 										</c:if>
 							</form>
-						</td>
-					</tr>
+						</div>
 				</c:forEach>
-				</table>
-				</div>
 			</div>
 		</div>
 	</main>
-	<%@ include file="/WEB-INF/views//main/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/main/footer.jsp"%>
 </body>
 </html>

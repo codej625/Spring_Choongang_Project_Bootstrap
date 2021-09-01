@@ -111,28 +111,44 @@
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_deleteMyself">회원 탈퇴</a></div> --%>
 <!-- 			</div> -->
 			
-			<div class="my_info_box">
-				<div>
-					<input type="button" value="all" onclick="allBtn()">
-					<input type="button" value="class" onclick="classBtn()">
-					<input type="button" value="meeting" onclick="meetingBtn()">
-				</div>
-				<div>
+			<div>
+			<div class="container col-12 h-100p-5 bg-light border rounded-3" style="
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-bottom: 3%; ">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="all" onclick="allBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+/*     margin-right: 30px; */
+    margin-left: 3%;" type="button" value="class" onclick="classBtn()">
+					<input class="btn btn-outline-success" style="
+    padding-right: 3%;
+    padding-left: 3%;
+    margin-right: 3%;
+    margin-left: 3%;" type="button" value="meeting" onclick="meetingBtn()">
+			</div>
+			
+			<div class="row">
 <!-- 				myPost 전부 보여주는거  -->
-				<table id="all" border="1">
+				<div>
+					<div class="row col-12" id="all">
 				<c:forEach var="lhj_MemberVO" items="${myPostList }">
-					<tr>
-						<td rowspan="3" id="table_img">
+					<div class="col-4 container card" style="width: 18rem;">
+					
+					
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
 								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
+								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 							</c:if>
 							</a>
-							</td>
-						<td colspan="2">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -140,44 +156,32 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-						</td>						
-					</tr>
-					<tr>
-						<td colspan="3">
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td style="width: 300px">가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
 							<form action="${pageContext.request.contextPath}/member/mypage_myPostMEmberList_">
 								<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								<a href="${pageContext.request.contextPath}/member/mypage_myPostMEmberList">
-									<input type="submit" value="신청 인원 관리">
+									<input class="btn btn-outline-success" type="submit" value="신청 인원 관리">
 								</a>
 							</form>
-						</td>
-					</tr>
+				</div>
 				</c:forEach>	
-				</table>
-				
+							</div>
+		</div>
 <!-- 				myPost -class 보여주는거  -->
-				<table id="class_" style="display: none;" border="1">
+				<div class="row col-12" id="class_" style="display: none">
 				<c:forEach var="lhj_MemberVO" items="${myPostList_class }">
-					<tr>
-						<td rowspan="3" id="table_img">
+					<div class="col-4 container card" style="width: 18rem;">		
+								
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
 								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
+								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 							</c:if>
 							</a>
-							</td>
-						<td colspan="2">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -185,44 +189,32 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-						</td>						
-					</tr>
-					<tr>
-						<td colspan="3">
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td style="width: 300px">가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
 							<form action="${pageContext.request.contextPath}/member/mypage_myPostMEmberList_">
 								<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								<a href="${pageContext.request.contextPath}/member/mypage_myPostMEmberList">
-									<input type="submit" value="신청 인원 관리">
+									<input class="btn btn-outline-success" type="submit" value="신청 인원 관리">
 								</a>
 							</form>
-						</td>
-					</tr>
+				</div>
 				</c:forEach>	
-				</table>
-				
+							</div>
+							
+							
 <!-- 				myPost -meeting 보여주는거  -->
-				<table id="meeting" style="display: none;" border="1">
+			<div class="row col-12" id="meeting" style="display: none">
 				<c:forEach var="lhj_MemberVO" items="${myPostList_meeting }">
-					<tr>
-						<td rowspan="3" id="table_img">
+					<div class="col-4 container card" style="width: 18rem;">
 							<a href="${pageContext.request.contextPath}/post/postListDetail?bt_num=${lhj_MemberVO.bt_num }&bc_num=${lhj_MemberVO.bc_num }&p_num=${lhj_MemberVO.p_num}">
 							<c:if test="${lhj_MemberVO.p_img == null}">
 								<img src="${pageContext.request.contextPath}/img/goya.jpg" width="250px">
 							</c:if>
 							<c:if test="${lhj_MemberVO.p_img != null}">
-								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }">
+								<img src="${pageContext.request.contextPath}/upload/${lhj_MemberVO.p_img }" width="250px">
 							</c:if>
 							</a>
-							</td>
-						<td colspan="2">
 							${lhj_MemberVO.p_title }
 							<c:if test="${lhj_MemberVO.p_cstatus == '0'}">
 								(무료)
@@ -230,32 +222,20 @@
 							<c:if test="${lhj_MemberVO.p_cstatus == '1'}">
 								(유료)
 							</c:if>
-						</td>						
-					</tr>
-					<tr>
-						<td colspan="3">
 							${lhj_MemberVO.p_intro }
-						</td>
-					</tr>
-					<tr>
-						<td style="width: 300px">가격 : ${lhj_MemberVO.p_cost }</td>
-						<td>
 							<form action="${pageContext.request.contextPath}/member/mypage_myPostMEmberList_">
 								<input type="hidden" name="bt_num" value="${lhj_MemberVO.bt_num }">
 								<input type="hidden" name="bc_num" value="${lhj_MemberVO.bc_num }">
 								<input type="hidden" name="p_num" value="${lhj_MemberVO.p_num }">
 								<a href="${pageContext.request.contextPath}/member/mypage_myPostMEmberList">
-									<input type="submit" value="신청 인원 관리">
+									<input class="btn btn-outline-success" type="submit" value="신청 인원 관리">
 								</a>
 							</form>
-						</td>
-					</tr>
-				</c:forEach>	
-				</table>
-				</div>
-				</div>
+						</div>
+				</c:forEach>
+			</div>
 		</div>
 	</main>
-	<%@ include file="/WEB-INF/views//main/footer.jsp"%>
+		<%@ include file="/WEB-INF/views/main/footer.jsp"%>
 </body>
 </html>

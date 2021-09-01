@@ -45,7 +45,7 @@
         </nav>
 		<!-- main -->
 		<div class="userinfo_wrap">
-			<div class="title">${lhj_MemberVO.m_name }님의 마이페이지</div>
+			<div class="title" style="margin-left: 3%">${lhj_MemberVO.m_name }님의 마이페이지</div>
 <!-- 			<div class="info_nav_bar"> -->
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage">마이페이지 홈</a></div> --%>
 <%-- 				<div class="info_nav_menu"><a href="${pageContext.request.contextPath}/member/mypage_update">회원정보 수정</a></div> --%>
