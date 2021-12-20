@@ -9,7 +9,8 @@
 	href="${pageContext.request.contextPath}/css/contents.css" />
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/main/header.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header1.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header2.jsp"%>
 	<!-- **MAIN START** -->
 	<main>
 		<!-- main -->

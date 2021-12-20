@@ -32,7 +32,13 @@
 	font-size: 15px;
 }
 /* 메시지입력창 */
-
+.msg{
+position:relative; 
+	top:400px;
+	width: 430px;
+	height: 25px;
+	margin: 0px;
+}
 /* 본인 text */
 .me {
 
@@ -50,17 +56,21 @@
 }
 
 </style>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/main.css" />
 </head>
 <body>
 
-	<div id="admin" > 채팅 관리자 창 </div>
+	<div id="admin" > [ 채팅 관리자 창 ] </div>
 	<!-- 유저가 접속할 때마다 이 템플릿으로 채팅창을 생성한다. -->
 	<div class="template" style="display: none" >
 	<!--  sessionNAME값 -->
-			<input type="text" id="name" value="회원아이디 = ${sessionID} "><br/>
+		<div>	<input type="text" id="name" value="회원아이디 = ${sessionID} "><br/>
+		</div>
 		<!-- 서버와 메시지를 주고 받는 콘솔 텍스트 영역 -->
 		<!--  <div id="textarea" class="console"></div>
 		<br />  -->
+		<div class="msg">
 		<form class="msgSend">
 			<!-- 메시지 텍스트 박스 -->
 			<input type="text" class="message"
@@ -69,6 +79,7 @@
 			<input value="Send" type="button" class="sendBtn">
 
 		</form>
+	</div>
 	</div>
 
 	   
@@ -81,7 +92,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	// 서버의 admin의 서블릿으로 웹 소켓을 한다.
-	var webSocket = new WebSocket("ws://localhost:8282/springProject01/admin");
+	var webSocket = new WebSocket("ws://localhost:8181/springProject01/admin");
 	// 운영자에서의 open, close, error는 의미가 없어서 형태만 선언
 	webSocket.onopen = function(message) {
 	

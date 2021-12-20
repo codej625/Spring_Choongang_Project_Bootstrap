@@ -5,7 +5,8 @@
 <head>
  <meta charset="UTF-8">
     <title>Testing websockets</title>
-
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/main.css" />
 </head>
 <body>
 <%@ include file="/WEB-INF/views/main/header.jsp"%>
@@ -43,7 +44,7 @@ $(".chat").on({
 
     <script type="text/javascript">
         var textarea = document.getElementById("messageWindow");
-        var webSocket = new WebSocket('ws://localhost:8282/springProject01/broadcasting');
+        var webSocket = new WebSocket('ws://localhost:8181/springProject01/broadcasting');
         var inputMessage = document.getElementById('inputMessage');
         var name = document.getElementById('name');
     webSocket.onerror = function(event) {

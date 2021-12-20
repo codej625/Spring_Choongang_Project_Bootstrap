@@ -14,8 +14,8 @@ spring:
   # Oracle Connect
   datasource:
     url: jdbc:oracle:thin:@localhost:1521/xe
-    username: s20210701
-    password: tiger
+    username: scott
+    password: 1007
     driver-class-name: oracle.jdbc.driver.OracleDriver
 
   # ORM JPA

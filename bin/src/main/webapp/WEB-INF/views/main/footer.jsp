@@ -6,23 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/foot.css" />
 </head>
 <body>
 	<!-- **FOOTER START** -->
-	<footer>
-		<div class=footer>
-			<div class="company_info">
-				<ul>
-					<li>(주)모꼬지(대표이사:중앙정보처리)</li>
-					<li>주소 : 서울특별시 어쩌고 저쩌고</li>
-					<li>대표번호 : 02-1234-5678</li>
-					<li>고객센터 : abcd@efg.com</li>
-				</ul>
-			</div>
-			<div class="ft_copyright">Copyright@Moggogi co., Ltd. All
-				rights reserved</div>
-		</div>
-	</footer>
+	<div class="container" style="margin-top: 0px; padding-top: 100px;">
+		<footer class="py-3 my-4">
+			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Home</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Features</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">Pricing</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">FAQs</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link px-2 text-muted">About</a></li>
+			</ul>
+			<p class="text-center text-muted">© 2021 Company, Inc</p>
+		</footer>
+	</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cate.css" />
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/main/header.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header1.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header2.jsp"%>
 	<!-- **MAIN START** -->
 	<main>
 		<!-- main -->
@@ -65,23 +66,30 @@
 								<option value="${pageContext.request.contextPath}/post/category?bt_num=2&bc_num=12">기타</option>
 							</c:if>
 						</select>
+						
 					</div>
-					<div class="item">지역</div>
-					<div class="item">시간/비용</div>
-					<div class="item">기간</div>
-					<div class="item">검색어</div>
+					<div class="item">
+						<form action="${pageContext.request.contextPath}/post/category" method="post">
+							<input type="hidden" name="bt_num" value="${bt_num }">
+							<input type="hidden" name="bc_num" value="${bc_num }">
+							<input type="text" id="keyword" name="keyword" placeholder="장소 및 모임명을 검색해보세요!" /><button type="submit">검색하기</button>
+						</form>
+					</div>
+					
 				</div>
 			</div>
 			<div class="con_section">
 				<c:forEach var="post" items="${listPost }">
 					<div class="con_item" style="cursor: pointer;" 
-						onclick="location.href='${pageContext.request.contextPath}/post/postListDetail?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">
+						onclick="location.href='${pageContext.request.contextPath}/post/postListDetail?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}&pm_id=${post.m_id }'">
 	                    <div class="con_img">
 	                        <img src="${pageContext.request.contextPath}/upload/${post.p_img}">
 	                    </div>
 	                    <div class="con_itm">
-							<input type="hidden" name="p_num" value="${post.p_num }">
-							${post.p_title }
+	                    	<div class="con_itm_tit">
+		                    	<input type="hidden" name="p_num" value="${post.p_num }">
+								${post.p_title }
+	                    	</div>
 	                    </div>
 	                    <div class="con_itm">
 	                        <div class="con_contents">

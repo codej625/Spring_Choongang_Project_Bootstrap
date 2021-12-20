@@ -8,8 +8,12 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/contents.css" />
 </head>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/modal.css" />
+</head>
 <body>
-	<%@ include file="/WEB-INF/views/main/header.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header1.jsp"%>
+  	<%@ include file="/WEB-INF/views/main/header2.jsp"%>
 	<!-- **MAIN START** -->
 	<main>
 		<!-- main -->
@@ -27,7 +31,39 @@
 									<div class="offer_img">
 										<img src="${pageContext.request.contextPath}/upload/${post.m_img}">
 									</div>
-									<h2>${post.m_name }</h2>
+									
+									<div id="myBtn"><h2><span class="hover-id">${post.m_name}</span></h2></div>
+									<div id="myModal" class="modal">
+									    <div class="modal-content">
+									        <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${post.m_name}님을 불량 회원으로 <span class="hover-id" onclick="showPopup();">신고</span></h2>
+									    </div>
+									</div>
+									
+									<script>
+									var modal = document.getElementById("myModal");
+									var btn = document.getElementById("myBtn");
+									var span = document.getElementsByClassName("close");
+									
+									btn.onclick = function() {
+									  modal.style.display = "block";
+									}
+									
+									span.onclick = function() {
+									  modal.style.display = "none";
+									}
+									
+									window.onclick = function(event) {
+									  if (event.target == modal) {
+									    modal.style.display = "none";
+									  }
+									}
+									
+									function showPopup(){
+											var url="${pageContext.request.contextPath}/post/report?m_id=${post.m_id}";
+								            window.open(url,"popup","width=400, height=300, top=10, left=10");
+								    }
+									</script>
+									
 								</div>
 								<div class="offer_item">
 									<div class="item_title">이 메 일</div>
@@ -63,7 +99,7 @@
 							</div>
 						</div>
 						<div class="meet_info">
-							<table border="1">
+							<table>
 								<tr>
 									<th colspan="2">${post.p_gname }</th>
 									<th>
@@ -74,8 +110,8 @@
 									</th>
 								</tr>
 								<tr>
-									<td colspan="2">${post.p_appstart } ~ ${post.p_append }까지</td>
-									<td>신청 가능 인원 ${post.p_capa }명 남음</td>
+									<td colspan="2"><span>${post.p_appstart } ~ ${post.p_append }</span>까지</td>
+									<td>신청 가능 인원 <span>${post.p_capa }명</span> 남음</td>
 								</tr>
 								
 							</table>
@@ -88,22 +124,24 @@
 <!-- 							이 게시물에 신청을 했으면 result = 1, 안헀으면 result = 0 -->
 <!-- 							<button>신청하기</button> -->
 							<c:if test="${sessionID == null}">
-								<button type="button" onclick="location.href='${pageContext.request.contextPath}/member/login'">신청하기</button>
-								<button type="button" onclick="location.href='${pageContext.request.contextPath}/member/login'">찜하기</button>
+								<button class="default_bt2 con_bt" onclick="location.href='${pageContext.request.contextPath}/member/login'">신청하기</button>
+								<button class="default_bt2 con_bt" onclick="location.href='${pageContext.request.contextPath}/member/login'">찜하기</button>
 							</c:if>
 							<c:if test="${sessionID != null}">
+<%-- 								<c:if test="${post.m_id == sessionID || sessionID == 'dkwksla@naver.com' }"> --%>
+<!-- 									<button type="button"  -->
 								<c:if test="${post.m_id == sessionID || sessionID == 'aaaaaa@aaaaaa.com' }">
-									<button type="button" 
+									<button class="default_bt2 con_bt"
 											onclick="location.href='${pageContext.request.contextPath}/post/postListUpdateView?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">
 											수정하기
 									</button>
-									<button type="button" 
+									<button class="default_bt2 con_bt"
 											onclick="location.href='${pageContext.request.contextPath}/post/postDelete?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">
 											삭제하기
 									</button>
 								</c:if>
 								<c:if test="${result > 0 }">
-									<button type="button" 
+									<button class="default_bt2 con_bt"
 										onclick="location.href='${pageContext.request.contextPath}/post/postRegInfoDelete?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">취소하기</button>
 								</c:if>
 								<c:if test="${result == 0 }">
@@ -111,16 +149,16 @@
 										신청끝났음.
 									</c:if>
 									<c:if test="${post.p_capa != 0 }">
-										<button type="button" 
+										<button class="default_bt2 con_bt"
 											onclick="location.href='${pageContext.request.contextPath}/post/postRegInfoApplication?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">신청하기</button>
 									</c:if>
 								</c:if>
 								<c:if test="${result2 == 0 }">
-									<button type="button"
+									<button class="default_bt2 con_bt"
 										onclick="location.href='${pageContext.request.contextPath}/post/postBookmarkInsert?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">찜 하기</button>
 								</c:if>
 								<c:if test="${result2 > 0 }">
-									<button type="button" 
+									<button class="default_bt2 con_bt"
 										onclick="location.href='${pageContext.request.contextPath}/post/postBookmarkDelete?bt_num=${post.bt_num }&bc_num=${post.bc_num }&p_num=${post.p_num}'">찜 취소하기</button>
 								</c:if>
 							</c:if>
@@ -193,6 +231,7 @@
 							<input type="hidden" name="bt_num" value="${post.bt_num }">
 							<input type="hidden" name="bc_num" value="${post.bc_num }">
 							<input type="hidden" name="p_num" value="${post.p_num }">
+							<input type="hidden" name="pm_id" value="${post.m_id }">
 							<input type="hidden" name="r_num" value="${r_num }">
 							<input type="hidden" name="m_id" value="${sessionID }">
 							<input type="hidden" name="r_indent" value="${r_indent }">
@@ -236,13 +275,14 @@
 <!-- 							대댓글들 다른이미지 보여주는곳 -->
 							<c:if test="${reply.r_level > 0 }">
 								<a class="photo">
-								<img src="${pageContext.request.contextPath}/img/re.gif" width="${reply.r_level*10 }">
+<%-- 								<img src="${pageContext.request.contextPath}/img/re.gif" width="${reply.r_level*30 }"> --%>
+								<img src="${pageContext.request.contextPath}/img/re.gif" width="100px;">
 								</a>
 							</c:if>
 <!-- 							댓글들 이미지 -->
 							<c:if test="${reply.r_level == 0 }">
 								<a class="photo">
-								<img src="${pageContext.request.contextPath}/img/01.jpg">
+								<img src="${pageContext.request.contextPath}/upload/${reply.m_img}">
 								</a>
 							</c:if>
 							${reply.m_name }
@@ -252,11 +292,11 @@
 <!-- 							댓글이 비공개일때 글쓴사람이랑 관리자만 보기 -->
 							<c:if test="${reply.r_openclose == 'N'}" >
 					            <c:choose>
-					                <c:when test="${reply.m_id == sessionID || sessionID == 'aaaaaa@aaaaaa.com'}">
+					                <c:when test="${reply.m_id == sessionID || post.m_id == sessionID}">
 					                    <textarea rows="5" cols="70" name="r_info" readonly="readonly">${reply.r_info }</textarea>
-					                    <button type="button" onclick="location.href='${pageContext.request.contextPath}/reply/replyDelete?bt_num=${reply.bt_num }&bc_num=${reply.bc_num }&p_num=${reply.p_num}&r_num=${reply.r_num}'">삭제</button>
+<%-- 					                    <button type="button" onclick="location.href='${pageContext.request.contextPath}/reply/replyDelete?bt_num=${reply.bt_num }&bc_num=${reply.bc_num }&p_num=${reply.p_num}&r_num=${reply.r_num}'">삭제</button> --%>
 <!-- 							           	 댓글이 비공개일때 답글쓰는 로직 -->
-							            <div id='dis' style="display: none;">
+							            <div id='dis${reply.r_num }' style="display: none;">
 		           							<form action="${pageContext.request.contextPath}/reply/replyReplyInsert" method="post">
 												<input type="hidden" name="bt_num" value="${reply.bt_num }">
 												<input type="hidden" name="bc_num" value="${reply.bc_num }">
@@ -275,7 +315,9 @@
 											</form>
 							            </div>
 										<c:if test="${reply.r_level == 0 }">
-											<button id='show' onclick="dis()">답변쓰기</button>
+											<c:if test="${sessionID != reply.m_id }">
+												<button id='show' onclick="dis(${reply.r_num})">답변쓰기</button>
+											</c:if>
 										</c:if>
 					                </c:when>
 					                <c:otherwise>비밀글은 작성자와 관리자만 볼 수 있습니다.</c:otherwise>
@@ -303,15 +345,14 @@
 										</div>
 									</form>
 					            </div>
-								<c:if test="${sessionID != null  }">
+								<c:if test="${sessionID != null || sessionID != reply.m_id  }">
 									<c:if test="${reply.r_level == 0 }">
 										<button id='show' onclick="dis(${reply.r_num})">답변쓰기</button>
 									</c:if>
-<!-- 									<button id='show' onclick="dis()">답변쓰기</button> -->
 								</c:if>
 								<c:if test="${sessionID == null}">
 									<a href="${pageContext.request.contextPath}/member/login">
-									<button id='show'>답변</button></a>
+									<button id='show'>답변쓰기</button></a>
 								</c:if>
 <!-- 								<button id='show' onclick="dis()">답변</button> -->
 								<script type="text/javascript">
@@ -325,10 +366,10 @@
 							    </script>
 <!-- 					            <button>답변</button> -->
 					            
-					            <c:if test="${sessionID == reply.m_id || sessionID == 'aaaaaa@aaaaaa.com' }">
-								<button type="button" onclick="location.href='${pageContext.request.contextPath}/reply/replyDelete?bt_num=${reply.bt_num }&bc_num=${reply.bc_num }&p_num=${reply.p_num}&r_num=${reply.r_num}'">삭제</button>
-								</c:if>
 					        </c:if>
+				            <c:if test="${reply.m_id == sessionID || sessionID == 'dkwksla@naver.com' }">
+							<button type="button" onclick="location.href='${pageContext.request.contextPath}/reply/replyDelete?bt_num=${reply.bt_num }&bc_num=${reply.bc_num }&p_num=${reply.p_num}&r_num=${reply.r_num}'">삭제</button>
+							</c:if>
 					        <hr>
 						</div>
 						</c:forEach>

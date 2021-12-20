@@ -17,10 +17,12 @@ ul, li {
 a {
 	color: #3c3c3c;
 	text-decoration: none;
+	font-size: 15px;
 }
 a {
 	color: #000;
 	text-decoration: none;
+	font-size: 15px;
 }
 .header_top {
 	position: relative;
@@ -143,4 +145,25 @@ a {
 	font-size: 16px;
 	color: #fff;
 	background-color: #2F2F96;
+}
+
+#naver_id_login{
+	top:-10000px;
+	left:-10000px;
+	display:absolute
+}
+
+#naver_id_login2{
+	width: 450px;
+/* 	width: 100%; */
+	height: 56px;
+/* 	padding: 0 0 0 50px; */
+/* 	padding: 20px 204px 20px 204px; */
+/* 	margin-top: 30px; */
+}
+
+#kakao_btn{
+	width: 450px;
+	height: 56px;
+/* 	padding: 0 0 0 50px; */
 }

@@ -95,6 +95,7 @@
 						</c:forEach>
 					</table>
 					<input type="submit" value="신고 승인" class="btn btn-outline-secondary">
+					<input type="submit" value="신고 불가" class="btn btn-outline-secondary">
 				</form>
 				<c:if test="${pg.startPage > pg.pageBlock }">
 					<a href="${pageContext.request.contextPath}/admin/report_list?currentPage=${pg.startPage-pg.pageBlock}">[이전]</a>
@@ -110,7 +111,6 @@
 				<div class="container-fluid px-4">
 					<div class="d-flex align-items-center justify-content-between small">
 						<div class="text-muted">Copyright &copy; Your Website 2021</div>
-						<div> <a href="#">Privacy Policy</a> &middot; <a href="#">Terms&amp; Conditions</a></div>
 					</div>
 				</div>
 			</footer>
